@@ -17,11 +17,11 @@ struct funkcjakwadratowa *wczytajfunkcje();
 
 void wypiszfunkcje(struct funkcjakwadratowa *wypisz);
 
-void delta(struct funkcjakwadratowa *funkcjakwadratowa);
+void delta(struct funkcjakwadratowa *funkcja);
 
-void miejscazerowe(struct funkcjakwadratowa *funkcjakwadratowa);
+void miejscazerowe(struct funkcjakwadratowa *funkcja);
 
-void wyliczwierzcholek(struct funkcjakwadratowa *funkcjakwadratowa);
+void wyliczwierzcholek(struct funkcjakwadratowa *funkcja);
 
 int main() {
     struct funkcjakwadratowa *mojafunkcja = wczytajfunkcje();
@@ -60,28 +60,27 @@ void wypiszfunkcje(struct funkcjakwadratowa *wypisz) {
     printf("Wierzcholek = (%.2f; %.2f)", wypisz->wierzcholek.x, wypisz->wierzcholek.y);
 }
 
-void delta(struct funkcjakwadratowa *funkcjakwadratowa) {
-    int delta = pow(funkcjakwadratowa->b, 2) - 4 * funkcjakwadratowa->a * funkcjakwadratowa->c;
-    funkcjakwadratowa->delta = delta;
+void delta(struct funkcjakwadratowa *funkcja) {
+    int delta = pow(funkcja->b, 2) - 4 * funkcja->a * funkcja->c;
+    funkcja->delta = delta;
 }
 
-void miejscazerowe(struct funkcjakwadratowa *funkcjakwadratowa) {
-    if (funkcjakwadratowa->delta > 0) {
-        float pierwiastekdelty = sqrt(funkcjakwadratowa->delta);
-        float x1 = (float) (-funkcjakwadratowa->b - pierwiastekdelty) / (2 * funkcjakwadratowa->a);
-        float x2 = (float) (-funkcjakwadratowa->b + pierwiastekdelty) / (2 * funkcjakwadratowa->a);
-        funkcjakwadratowa->x1 = x1;
-        funkcjakwadratowa->x2 = x2;
-    } else if (funkcjakwadratowa->delta == 0) {
-        float x0 = (float) (-funkcjakwadratowa->b) / (2 * funkcjakwadratowa->a);
-        funkcjakwadratowa->x0 = x0;
+void miejscazerowe(struct funkcjakwadratowa *funkcja) {
+    if (funkcja->delta > 0) {
+        float pierwiastekdelty = sqrt(funkcja->delta);
+        float x1 = (float) (-funkcja->b - pierwiastekdelty) / (2 * funkcja->a);
+        float x2 = (float) (-funkcja->b + pierwiastekdelty) / (2 * funkcja->a);
+        funkcja->x1 = x1;
+        funkcja->x2 = x2;
+    } else if (funkcja->delta == 0) {
+        float x0 = (float) (-funkcja->b) / (2 * funkcja->a);
+        funkcja->x0 = x0;
     }
 }
 
-void wyliczwierzcholek(struct funkcjakwadratowa *funkcjakwadratowa) {
-    float p = (float) (-funkcjakwadratowa->b) / (2 * funkcjakwadratowa->a);
-    float q = (float) (-funkcjakwadratowa->delta) / (4 * funkcjakwadratowa->a);
-    funkcjakwadratowa->wierzcholek.x = p;
-    funkcjakwadratowa->wierzcholek.y = q;
+void wyliczwierzcholek(struct funkcjakwadratowa *funkcja) {
+    float p = (float) (-funkcja->b) / (2 * funkcja->a);
+    float q = (float) (-funkcja->delta) / (4 * funkcja->a);
+    funkcja->wierzcholek.x = p;
+    funkcja->wierzcholek.y = q;
 }
-
