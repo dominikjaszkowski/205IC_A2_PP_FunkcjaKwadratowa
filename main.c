@@ -10,7 +10,7 @@ struct funkcjakwadratowa {
     int a, b, c;
     int delta;
     float x1, x2, x0;
-    struct punkt *wierzcholek;
+    struct punkt wierzcholek;
 };
 
 struct funkcjakwadratowa *wczytajfunkcje();
@@ -57,7 +57,7 @@ void wypiszfunkcje(struct funkcjakwadratowa *wypisz) {
     } else if (wypisz->delta < 0) {
         printf("Brak miejsc zerowych\n");
     }
-    printf("Wierzcholek = (%.2f; %.2f)", wypisz->wierzcholek->x, wypisz->wierzcholek->y);
+    printf("Wierzcholek = (%.2f; %.2f)", wypisz->wierzcholek.x, wypisz->wierzcholek.y);
 }
 
 void delta(struct funkcjakwadratowa *funkcjakwadratowa) {
@@ -79,10 +79,9 @@ void miejscazerowe(struct funkcjakwadratowa *funkcjakwadratowa) {
 }
 
 void wyliczwierzcholek(struct funkcjakwadratowa *funkcjakwadratowa) {
-    funkcjakwadratowa->wierzcholek = (struct punkt *) malloc(sizeof(struct punkt));
     float p = (float) (-funkcjakwadratowa->b) / (2 * funkcjakwadratowa->a);
     float q = (float) (-funkcjakwadratowa->delta) / (4 * funkcjakwadratowa->a);
-    funkcjakwadratowa->wierzcholek->x = p;
-    funkcjakwadratowa->wierzcholek->y = q;
+    funkcjakwadratowa->wierzcholek.x = p;
+    funkcjakwadratowa->wierzcholek.y = q;
 }
 
