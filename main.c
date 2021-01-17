@@ -15,7 +15,7 @@ struct funkcjakwadratowa {
 
 struct funkcjakwadratowa *wczytajfunkcje();
 
-void wypiszfunkcje(struct funkcjakwadratowa *funkcjadowypisania);
+void wypiszfunkcje(struct funkcjakwadratowa *wypisz);
 
 void delta(struct funkcjakwadratowa *funkcjakwadratowa);
 
@@ -46,18 +46,18 @@ struct funkcjakwadratowa *wczytajfunkcje() {
     }
 }
 
-void wypiszfunkcje(struct funkcjakwadratowa *funkcjadowypisania) {
-    printf("\nf(x) = %dx^2 + %dx + %d\n", funkcjadowypisania->a, funkcjadowypisania->b, funkcjadowypisania->c);
-    printf("Delta = %d\n", funkcjadowypisania->delta);
+void wypiszfunkcje(struct funkcjakwadratowa *wypisz) {
+    printf("\nf(x) = %dx^2 + %dx + %d\n", wypisz->a, wypisz->b, wypisz->c);
+    printf("Delta = %d\n", wypisz->delta);
 
-    if (funkcjadowypisania->delta > 0) {
-        printf("Miejsca zerowe funkcji: x1= %.2f, x2= %.2f\n", funkcjadowypisania->x1, funkcjadowypisania->x2);
-    } else if (funkcjadowypisania->delta == 0) {
-        printf("Miejsce zerowe funkcji: x0= %.2f\n", funkcjadowypisania->x0);
-    } else if (funkcjadowypisania->delta < 0) {
+    if (wypisz->delta > 0) {
+        printf("Miejsca zerowe funkcji: x1= %.2f, x2= %.2f\n", wypisz->x1, wypisz->x2);
+    } else if (wypisz->delta == 0) {
+        printf("Miejsce zerowe funkcji: x0= %.2f\n", wypisz->x0);
+    } else if (wypisz->delta < 0) {
         printf("Brak miejsc zerowych\n");
     }
-    printf("Wierzcholek = (%.2f, %.2f)", funkcjadowypisania->wierzcholek->x, funkcjadowypisania->wierzcholek->y);
+    printf("Wierzcholek = (%.2f; %.2f)", wypisz->wierzcholek->x, wypisz->wierzcholek->y);
 }
 
 void delta(struct funkcjakwadratowa *funkcjakwadratowa) {
